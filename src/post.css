@@ -1,0 +1,110 @@
+#header{
+    width: 100%;
+    color: rgb(97, 95, 95);
+    text-align:center;
+  }
+
+  p{
+    color: black;
+    padding: 15px;
+  }
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: black;
+    border-style: solid;
+    width:80%;
+    height: auto;
+    left:31%;
+    margin:5px;
+    padding: 2.5px;
+}
+
+.topbox{
+    width: 100%;
+    text-align:center;
+    background-color: rgb(97, 95, 95);
+    color: black;
+}
+
+
+
+.midbox{
+  display: flex;
+  width: 100%; 
+  flex-direction: column;
+}
+
+
+.starbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+
+.bottombox{
+  display: flex;
+   width: 100%;
+    background-color: rgb(97, 95, 95);
+    text-align:left;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.paragraph{
+    flex-direction: row;
+    text-align:left;
+    padding-right: 80%;
+}
+
+
+.innercomment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-color: black;
+  border-style: solid;
+  width:auto;
+  height: auto;
+  left:31%;
+  margin:5px;
+  padding: 2.5px;
+}
+
+.innercommentsecondbox{
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  border-style: solid;
+  width:auto;
+  height: auto;
+  left:31%;
+  margin:5px;
+  padding: 2.5px;
+}
+
+.boxleft{
+color: black;
+background-color: rgb(68, 67, 67);
+border-color: black;
+border-style: solid;
+}
+
+.boxright{
+  color: black;
+  background-color: rgb(68, 67, 67);
+  border-color: black;
+  border-style: solid;
+  }
+  
+  img{
+    left:35%;
+    margin:20px;
+    border-style: none;
+  }
+  
+  

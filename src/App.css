@@ -1,0 +1,84 @@
+#header{
+  width: 100%;
+  color: rgb(97, 95, 95);
+  text-align:center;
+}
+
+.hidden{
+  text-align:center;
+  color: red;
+  font-size: 10px;
+  margin-top:1px;
+  margin-left:1px;
+  margin-right:1px; 
+  padding:1px 1px;
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type=text]{
+  width:70%;
+  padding: 12px 10px;
+  margin: 1px;
+  border:none;
+  border-bottom: 1px solid rgb(109, 107, 107);
+}
+
+input[type=password]{
+  width:70%;
+  padding: 12px 10px;
+  margin: 1px;
+  border:none;
+  border-bottom: 1px solid rgb(109, 107, 107);
+}
+
+input[type=email]{
+  width:70%;
+  padding: 12px 10px;
+  margin: 1px;
+  border:none;
+  border-bottom: 1px solid rgb(109, 107, 107);
+}
+
+button{
+  width: 50%;
+  color: white;
+  background-color:rgb(216, 51, 51);
+  text-align:center;
+  font-size:16px;
+  padding:10px 22px;
+  border-radius:8px;
+  cursor: pointer;
+  left:32%;
+  margin:10px;
+}
+
+img{
+  border-radius: 100%;
+  border-style: outset;
+  left:35%;
+  margin:20px;
+}
+
+#page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signupBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style:outset;
+  border-radius:12px;
+  width:350px;
+  height: auto;
+  left:31%;
+  margin:100px;
+}
+
