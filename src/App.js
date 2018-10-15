@@ -3,6 +3,8 @@ import './App.css';
 import Signup from './Signup';
 import Post from './post';
 import store from './components/store'
+import Chat from './chat.js'
+import Components from './components'
 import {Router,Route,browserHistory} from 'react-router';
 import { Provider} from 'react-redux';  //redux
 
@@ -24,6 +26,8 @@ class App extends Component {
         <Router history={browserHistory}>
           <Route path='signup' component={Signup}/>
           <Route path='post' component={Post}/>
+          <Route path='chat' component={Chat}/>
+          <Route path='components' component={Components}/>
         </Router>
       </Provider>     //redux
     );

@@ -45,10 +45,9 @@ class SignupPage extends React.Component{
     }
 
     updateInputEmailValue(event){ 
-        return(
             this.setState({
             email:event.target.value,
-            })
+            }
         );
     }
 

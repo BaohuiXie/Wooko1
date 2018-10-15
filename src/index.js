@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase';
-
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 var config = {
         apiKey: "AIzaSyDZr_Q-nT5-t3YA4GoJgHiLWU81khJIBmc",
         authDomain: "chat-9f0ea.firebaseapp.com",
@@ -16,6 +17,11 @@ var config = {
     
     firebase.initializeApp(config);
     var database = firebase.database();
+    const storage = firebase.storage();
+    export {
+        database, storage, firebase as default
+    }
+    Enzyme.configure({ adapter: new Adapter() });
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
