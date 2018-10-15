@@ -14,6 +14,7 @@ export default class Chat extends React.Component {
         };
         this.listenToMESSAGE();
         this.listenToImage.bind(this);
+        this.scrollToBottom.bind(this);
     }
 
     onChangeText(event) {
@@ -60,6 +61,9 @@ export default class Chat extends React.Component {
             this.setState({url: this.url_array});
         })
     }
+    scrollToBottom(){
+        this.message.scrollToBottom({behavior:'smooth'});
+    }
 
 // change->send->listen
     render() {
@@ -68,7 +72,7 @@ export default class Chat extends React.Component {
                 <h1 id='title'>Chat</h1><hr />
                 <div id='Block'>
                     <div id='messageBlock'>
-                        <div>
+                        <div ref={message=>this.message=message}>
                             {this.state.textarray.map((val, index) => [<p key={index}>{val}</p>, <br key={index} />])}
                             {this.state.url.map((val2,index)=>[<img key={index} src={val2}/>])}
                         </div>
