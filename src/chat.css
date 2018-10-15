@@ -1,4 +1,4 @@
-#messageBlock{
+#Block{
     display: flex;
     flex-direction: column;
     border-color: black;
@@ -8,17 +8,21 @@
     border-style: outset;
     width: 1000px;
     height: 600px;
+    justify-content: flex-end;
+}
+
+#messageBlock{
+    justify-content: flex-end;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #title{
     text-align:center;
 }
 
-#buttonAndinput{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
 
 .button{
     width: 20%;

@@ -66,10 +66,14 @@ export default class Chat extends React.Component {
         return (
             <div>
                 <h1 id='title'>Chat</h1><hr />
-                <div id='messageBlock'>
-                    {this.state.textarray.map((val, index) => [<p key={index}>{val}</p>, <br key={index} />])}
-                    {this.state.url.map((val2,index)=>[<img key={index} src={val2}/>])}
-                    <div id='buttonAndinput'>
+                <div id='Block'>
+                    <div id='messageBlock'>
+                        <div>
+                            {this.state.textarray.map((val, index) => [<p key={index}>{val}</p>, <br key={index} />])}
+                            {this.state.url.map((val2,index)=>[<img key={index} src={val2}/>])}
+                        </div>
+                    </div>
+                    <div>
                         <input value={this.state.text} type='text' placeholder='TextLine'
                             onChange={this.onChangeText.bind(this)}/>
                         <button className='button' onClick={this.sendText} >Send</button>
