@@ -1,100 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 import image from './logo.JPG'
+import TextInpute from './components/text_input'
 const axios = require('axios');
 
 class SignupPage extends React.Component{
     constructor(props){
         super(props);
         this.state={ 
-            email:"",
-            password:'',
-            passwordConfirm:'',
-            name:'',
-            is_email_valid: true,
-            is_Name_valid: true,
-            is_passwordConfirm_valid: true,
-            is_password_valid: true
         };
     }
 
-    validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
-
-    validatePassword(){
-        if(this.state.password.length<6 || this.state.password.length>15){
-            return false;
-        }
-        return true;
-    }
-
-    validatePasswordConfirm(){
-        if(this.state.password===this.state.passwordConfirm){
-            return true;
-        }
-        return false;
-    }
-
-    validateName(){
-        if(this.state.name.length>20){
-            return false;
-        }
-        return true;
-    }
-
-    updateInputEmailValue(event){ 
-            this.setState({
-            email:event.target.value,
-            }
-        );
-    }
-
-    updateInputPasswordValue(event){ 
-        this.setState({
-            password:event.target.value,
-        })
-    }
-
-    updateInputPasswordConfirmValue(event){ 
-        this.setState({
-            passwordConfirm:event.target.value,
-        })
-    }
-
-    updateInputNameValue(event){ 
-        this.setState({
-            name:event.target.value,
-        })
-    }
-
     signUp(event){ 
-        if (this.validateEmail(this.state.email)){ 
-            if(this.validatePassword()){
-                if(this.validatePasswordConfirm()){
-                    if(this.validateName()){
-                        alert('signup success!')
-                        axios.post('https://jsonplaceholder.typicode.com/users',{
-                            "data":{
-                                "email":this.state.email,
-                                "password":this.state.password,
-                                "name":this.state.name,
-                            }
-                        }).then((response) => {
-                            console.log(response);
-                        });
-                    }else{
-                        this.setState({is_Name_valid: false});
-                    }
-                }else{
-                    this.setState({is_passwordConfirm_valid: false});
+        let validEmail = this.emailRef.validate();
+        let validName = this.nameRef.validate();
+        let validPassword = this.passwordRef.validate();
+        let validatePasswordConfirm = this.passwordCONFIRMERef.validate();
+        if(validEmail&&validName&&validPassword&&validatePasswordConfirm){
+            alert('signup success!')
+            axios.post('https://jsonplaceholder.typicode.com/users',{
+                "data":{
+                    "email":this.state.email,
+                    "password":this.state.password,
+                    "name":this.state.name,
                 }
-            }else{
-                this.setState({is_password_valid: false});
-            }
-        }else{
-            this.setState({is_email_valid: false});
+            }).then((response) => {
+                console.log(response);
+            });
         }
     }
     
@@ -104,15 +36,43 @@ class SignupPage extends React.Component{
                 <div id='header'><h1>Signup</h1><hr/></div>
                 <div id='page'>
                     <div id='signupBox'>
-                        <img src={image} alt="Cumpus Cloud Logo" height="60" width="60"/>
-                        <input value={this.state.email} onChange={this.updateInputEmailValue.bind(this)} type='email' placeholder='Email'/><br/>
-                        {this.state.is_email_valid? null : <div className='hidden'><p>Not valid Email</p></div>}
-                        <input value={this.state.password} onChange={this.updateInputPasswordValue.bind(this)} type='password' placeholder='Password'/><br/>
-                        {this.state.is_password_valid? null : <div className='hidden'><p>Not valid Password</p></div>}
-                        <input value={this.state.passwordConfirm} onChange={this.updateInputPasswordConfirmValue.bind(this)} type='password' placeholder='Password Conformation'/><br/>
-                        {this.state.is_passwordConfirm_valid? null : <div className='hidden'><p>Password is different</p></div>}
-                        <input value={this.state.name} onChange={this.updateInputNameValue.bind(this)} type='text' placeholder='Name'/><br/>
-                        {this.state.is_Name_valid? null : <div className='hidden'><p>Name is not valid</p></div>}
+                        <img src={image} alt="Campus Cloud Logo" height="60" width="60"/>
+                        <TextInpute 
+                            placeholder="Email"
+                            ref={(ref) => {
+                                this.emailRef = ref;
+                            }}
+                            on_Changed={(event)=>{
+                                this.setState({Email: event})
+                            }}
+                            validations={[validateExistence, validateEmail]}/>
+                        <TextInpute
+                            placeholder="Password"
+                            ref={(ref) => {
+                                this.passwordRef = ref;
+                            }}
+                            on_Changed={(event)=>{
+                                this.setState({password: event})
+                            }}
+                            validations={[validateExistence, validatePassword]}/>
+                        <TextInpute
+                            placeholder="Password Confirmation"
+                            ref={(ref) => {
+                                this.passwordCONFIRMERef = ref;
+                            }}
+                            on_Changed={(event)=>{
+                                this.setState({password: event})
+                            }}
+                            validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password)]}/>
+                        <TextInpute
+                            placeholder="Name"
+                            ref={(ref) => {
+                                this.nameRef = ref;
+                            }}
+                            on_Changed={(event)=>{
+                                this.setState({name: event})
+                            }}
+                            validations={[validateExistence, validateName]}/>
                         <button type='button' onClick={this.signUp.bind(this)}>Signup</button>
                     </div>
                 </div>
@@ -121,5 +81,45 @@ class SignupPage extends React.Component{
     }
 }
 
+function validateExistence(event){
+    if(event){
+        return "";
+    }else{
+        return "Require Another Input";
+    }
+}
+
+function validateEmail(event){
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(!re.test(String(event).toLowerCase())){
+        return "The Email is not valid";
+    }else{
+        return "";
+    }
+}
+
+function validateName(event){
+    if(event.length>20){
+        return "The name is not valid, Must be shorter than 20";
+    }else{
+        return "";
+    }
+}
+
+function validatePassword(event){
+    if(event.length<6 || event.length>15){
+        return "The password is not valid";
+    }else{
+        return ""
+    }
+}
+
+function validatePasswordConfirm(confirmation,event){
+    if(confirmation===event){
+        return "Please enter same password";
+    }else{
+        return "";  
+    }
+}
+
 export default SignupPage;
-JSON.stringify;
