@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import imag from './picture.png';
+import imag from './picture/picture.png';
 import * as firebase from 'firebase';
 import {storage} from './index';
 import "./chat.css";

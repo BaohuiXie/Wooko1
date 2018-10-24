@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import image from '../logo.JPG';
+import image from '.logo.JPG';
 import TextInput from '../components/text_input';
 const axios = require('axios');
 

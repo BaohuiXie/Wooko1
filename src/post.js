@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
-import './post.css';
-import uparrow from './up-arrow.png';
-import downarrow from './download.png';
+import './components/post.styles';
 import Stars from './components/star';
-import CommentItem from './components/CommentItem'
-import Outbox from './components/outbox';
 import PostForm from './components/Postforms'
 import { connect } from 'react-redux';  //redux
 import { fetchPosts, fetchComment } from './actions/postAction'
 import { changeColor } from './actions/colorAction';
+import BottomBox from './components/BottomBox'
+import styles from './components/post.styles';
 const axios = require('axios');
 
 class Post extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // posts: [],
-            identifyonClick: false,
-            num: 1,
-        };
+        this.state = {};
     }
-
-    //functio?n(){this.box1show1()}
-    // {()=> this.box1show1()}
-    // (x) => this.box1show1()
 
     componentWillMount() {
         this.props.fetchPosts();
@@ -31,35 +21,6 @@ class Post extends React.Component {
     }
     componentDidMount() {
         alert(this.props.location.query.hhh);
-    }
-    // componentWillMount(){
-    //     fetch('https://jsonplaceholder.typicode.com/posts')
-    //     .then(res => res.json())
-    //     .then(data => this.setState({posts: data}));
-    // }
-
-    // componentWillMount() {
-    //     let p = axios({
-    //         method: 'get',
-    //         url: 'https://jsonplaceholder.typicode.com/posts',
-    //         validateStatus: function (status) {
-    //             return status >= 200 && status < 300; // default
-    //         },
-    //     });
-
-    //     p.then((response) => {
-    //         this.setState({posts: response.data});
-    //     });
-    // }
-
-    validComments(comments,post_id){
-        let comments_sub = [];
-        comments.forEach((comment) =>{
-            if (comment.postId == post_id) {
-                comments_sub.push(comment);
-            }
-        });
-        return <CommentItem comments={comments_sub} postId={post_id} />;
     }
 
     render() {
@@ -76,25 +37,23 @@ class Post extends React.Component {
             );
         } else {
             const postItems = items.map(post => (
-                <div className='box' key={post.id}>
-                    <h3 className='topbox'>{post.title}</h3>
-                    <div className='midbox'>
+                <div style={styles.box} key={post.id}>
+                    <h3 style={styles.topbox}>{post.title}</h3>
+                    <div style={styles.midbox}>
                         <p>{post.body}</p>
-                        <div className='starbox'>
-                            <Stars litNum={this.state.num} totalstarNum={5} gooooo={index => this.setState({ num: index })} />
+                        <div style={styles.starbox}>
+                            <Stars
+                                totalstarNum={5}
+                                showstars={(litNum) => {
+                                }} />
                         </div>
                     </div>
-                    <div className='bottombox'>
-                        <div className='paragraph'><p>Show Comments</p></div>
-                        <div className='arrow'>
-                            {this.state.identifyonClick ? <img src={uparrow} alt='uparraw' onClick={() => this.setState({ identifyonClick: false })} height={20} width={20} />
-                                : <img src={downarrow} alt="downarrow" onClick={() => this.setState({ identifyonClick: true })}
-                                    height={20} width={20} />}
-                        </div>
-                    </div>
-                    <div >
-                        {this.state.identifyonClick? this.validComments(comments,post.id):null}
-                    </div>
+                    <BottomBox 
+                        comments={this.props.comments}
+                        postID={post.id}
+                        identify={(trueOrfalse) => {}}
+                        />
+                    {/* 记得把post的state identifyonClick传给BottomBox的props */}
                 </div>
             ));
             return ([
@@ -108,7 +67,7 @@ class Post extends React.Component {
                                 this.props.changeColor('green');
                             }
                         }} />
-                    <h1>Posts</h1><hr />
+                    <h1 style={styles.header}>Posts</h1><hr />
                     <PostForm />
                     <br />
                     {postItems}

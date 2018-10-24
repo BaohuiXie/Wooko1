@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './post.styles';
 
 class PostForm extends Component{
     constructor(props){
@@ -16,7 +17,7 @@ class PostForm extends Component{
     }
 
     onSubmit(e){
-        e.preventDefalst(); //???????????????
+        e.preventDefalst();
 
         const post ={
             title: this.state.title,
@@ -28,7 +29,7 @@ class PostForm extends Component{
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(post)//????????????????
+            body: JSON.stringify(post)
         })
         .then(res=>res.json())
         .then(data =>console.log(data));
@@ -37,8 +38,8 @@ class PostForm extends Component{
 
     render(){
         return([
-            <div>
-                <h1>Add Post</h1>
+            <div style={styles.Form}>
+                <h1 style={styles.header}>Add Post</h1>
                 <form onSubmit={this.onSubmit}>
                     <div>
                         <label>Title: </label><br/>
