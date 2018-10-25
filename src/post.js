@@ -57,7 +57,7 @@ class Post extends React.Component {
                 </div>
             ));
             return ([
-                <div>
+                <div style={styles.box}>
                     <div
                         style={{ width: 50, height: 50, backgroundColor: this.props.color ? this.props.color : 'black' }}
                         onClick={() => {

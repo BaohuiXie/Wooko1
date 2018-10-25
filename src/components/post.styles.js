@@ -10,11 +10,12 @@ const styles = {
     alignItems: 'center',
     borderColor: 'black',
     borderStyle: 'solid',
-    width:'80%',
+    width:'50%',
     height: 'auto',
     left:'31%',
     margin:'5px',
     padding: '2.5px',
+    flexWrap:'wrap',
   },
 
   box:{
@@ -28,6 +29,7 @@ const styles = {
     left:'31%',
     margin:'5px',
     padding: '2.5px',
+    flexWrap:'wrap',
   },
 
 
@@ -49,6 +51,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignContent: 'flex-end',
+    flexWrap:'wrap',
   },
 
   bottombox:{
@@ -58,25 +61,34 @@ const styles = {
     textAlign:'left',
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexWrap:'wrap',
+
+  },
+
+  arrow:{
+    display: 'flex',
+    width: '50%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   
   paragraph:{
-    flexDirection: 'row',
     textAlign:'left',
-    paddingRight: '80%',
+    width: '50%',
   },
 
   innercomment:{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    borderColor: 'black',
-    borderStyle: 'solid',
+    border:'none',
     width:'auto',
     height: 'auto',
     left:'31%',
     margin:'5px',
     padding: '2.5px',
+    flexWrap:'wrap',
   },
 
 
@@ -85,6 +97,8 @@ const styles = {
     backgroundColor: 'rgb(68, 67, 67)',
     borderColor: 'black',
     borderStyle: 'solid',
+    flexWrap:'wrap',
+    width:'50',
   },
 
 
@@ -93,11 +107,20 @@ const styles = {
       backgroundColor: 'rgb(68, 67, 67)',
       borderColor: 'black',
       borderStyle: 'solid',
+      flexWrap:'wrap',
+      width:'50%',
+  },
+
+  innerBottemBox:{
+    width:'auto',
+    display:'flex',
+    flexDirection:'row',
+    border:'none',
   },
 
   innercommentsecondbox:{
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     borderColor: 'black',
     borderStyle: 'solid',
     width:'auto',
