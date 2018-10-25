@@ -13,8 +13,6 @@ export default class Chat extends React.Component {
             url:[],
         };
         this.listenToMESSAGE();
-        this.listenToImage.bind(this);
-        this.scrollToBottom.bind(this);
     }
 
     onChangeText(event) {
@@ -37,6 +35,9 @@ export default class Chat extends React.Component {
         messageLisener.on('child_added', (data) => {
             // console.log(data.key);
             // console.log(data.val().text);
+            const val = data.val();
+
+            //if(val = )
             this.text_array.push(data.val().text)
             this.setState({textarray: this.text_array});
         })
@@ -52,7 +53,7 @@ export default class Chat extends React.Component {
         this.state.selectedImage && this.setState({selectedImage:null})
     }
 
-    listenToImage(){
+    listenToImage=()=>{
         this.url_array = [];
         var storageRef = storage.ref();
         var imagesRef = storageRef.child('images/abc.jpg');

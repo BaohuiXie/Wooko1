@@ -60,10 +60,10 @@ class SignupPage extends React.Component{
                             ref={(ref) => {
                                 this.passwordCONFIRMERef = ref;
                             }}
-                            on_Changed={(event)=>{
-                                this.setState({password: event})
+                            on_Changed={(text)=>{
+                                this.setState({passwordconfirm: text})
                             }}
-                            validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password)]}/>
+                            validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password, this.state.passwordconfirm)]}/>
                         <TextInpute
                             placeholder="Name"
                             ref={(ref) => {
@@ -85,7 +85,7 @@ function validateExistence(event){
     if(event){
         return "";
     }else{
-        return "Require Another Input";
+        return "Require Input";
     }
 }
 
@@ -98,6 +98,7 @@ function validateEmail(event){
     }
 }
 
+
 function validateName(event){
     if(event.length>20){
         return "The name is not valid, Must be shorter than 20";
@@ -105,6 +106,7 @@ function validateName(event){
         return "";
     }
 }
+
 
 function validatePassword(event){
     if(event.length<6 || event.length>15){
@@ -114,12 +116,11 @@ function validatePassword(event){
     }
 }
 
-function validatePasswordConfirm(confirmation,event){
-    if(confirmation===event){
-        return "Please enter same password";
-    }else{
-        return "";  
-    }
-}
 
+function validatePasswordConfirm(confirmation, text) {
+    if(text===confirmation){
+        return "";
+    }
+    return "Password and confirmation do not agree";
+}
 export default SignupPage;

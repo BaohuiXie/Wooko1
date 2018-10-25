@@ -97,8 +97,9 @@ const styles = {
     backgroundColor: 'rgb(68, 67, 67)',
     borderColor: 'black',
     borderStyle: 'solid',
-    flexWrap:'wrap',
-    width:'50',
+   // flexWrap:'wrap',
+    //width:'50',
+    flex:1
   },
 
 
@@ -107,12 +108,13 @@ const styles = {
       backgroundColor: 'rgb(68, 67, 67)',
       borderColor: 'black',
       borderStyle: 'solid',
-      flexWrap:'wrap',
-      width:'50%',
+     // flexWrap:'wrap',
+      //width:'50%',
+      flex:1
   },
 
   innerBottemBox:{
-    width:'auto',
+    width:'100%',
     display:'flex',
     flexDirection:'row',
     border:'none',

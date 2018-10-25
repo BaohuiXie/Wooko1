@@ -5,7 +5,7 @@ import emptystar from "../picture/star_empty.png";
 export  class Star extends Component {
     render(){
         const { identyifemptStar, index, showstar } = this.props;
-        return  <img src={identyifemptStar ? shiningstar :emptystar } onClick={()=>showstar(index)} alt={identyifemptStar ? "shining_star" : "empt_star"} height={20} width={20} />          
+        return  <img src={identyifemptStar ? shiningstar :emptystar } onClick={()=>showstar(index+1)} alt={identyifemptStar ? "shining_star" : "empt_star"} height={20} width={20} />          
     }
 }
 
@@ -22,7 +22,7 @@ export default class Stars extends Component {
             starComponents.push(<Star
                 key={i}
                 index={i}
-                identyifemptStar={this.state.numOfStar>=i}
+                identyifemptStar={this.state.numOfStar>=(i+1)}
                 showstar={this.showStar}
             />)
         }

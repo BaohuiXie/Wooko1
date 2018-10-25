@@ -35,7 +35,6 @@ export default class TextInput extends PureComponent {
 
   validate = () => {
     if (!this.props.validations) return true;
-
     for (let i = 0; i < this.props.validations.length; i++) {
       let validate_func = this.props.validations[i];
       let err_msg = validate_func(this.state.value);
@@ -44,9 +43,7 @@ export default class TextInput extends PureComponent {
         return false;
       }
     }
-
     this.setState({err_msg: ""});
-
     return true;
   }
 }
