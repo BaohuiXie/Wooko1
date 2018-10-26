@@ -37,7 +37,7 @@ class SignupPage extends React.Component{
                 <div id='header'><h1>Signup</h1><hr/></div>
                 <div id='page'>
                     <div id='signupBox'>
-                        <img src={image} alt="Campus Cloud Logo" height="60" width="60"/>
+                        <img src={image} alt="Campus Cloud Logo" height="60" width="80"/>
                         <TextInpute 
                             placeholder="Email"
                             ref={(ref) => {

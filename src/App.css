@@ -58,8 +58,7 @@ button{
 }
 
 img{
-  border-radius: 100%;
-  border-style: outset;
+  border:none;
   left:35%;
   margin:20px;
 }

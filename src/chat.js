@@ -87,7 +87,7 @@ export default class Chat extends React.Component {
                                     case 'image':
                                         return (
                                             <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >,
-                                            <img src={content} height='100px' width='100px'/>
+                                            <img src={content} height='200px' width='200px'/>
                                         );
                                 }
                             })
