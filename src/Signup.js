@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import image from './picture/logo.JPG'
-import TextInpute from './components/text_input'
+import image from './picture/logo.JPG';
+import TextInpute from './components/text_input';
+import Button from './components/button';
 const axios = require('axios');
 
 class SignupPage extends React.Component{
@@ -42,6 +43,7 @@ class SignupPage extends React.Component{
                             ref={(ref) => {
                                 this.emailRef = ref;
                             }}
+                            type='email'
                             on_Changed={(event)=>{
                                 this.setState({Email: event})
                             }}
@@ -51,6 +53,7 @@ class SignupPage extends React.Component{
                             ref={(ref) => {
                                 this.passwordRef = ref;
                             }}
+                            type='password'
                             on_Changed={(event)=>{
                                 this.setState({password: event})
                             }}
@@ -60,6 +63,7 @@ class SignupPage extends React.Component{
                             ref={(ref) => {
                                 this.passwordCONFIRMERef = ref;
                             }}
+                            type='password'
                             on_Changed={(text)=>{
                                 this.setState({passwordconfirm: text})
                             }}
@@ -69,10 +73,15 @@ class SignupPage extends React.Component{
                             ref={(ref) => {
                                 this.nameRef = ref;
                             }}
+                            type='text'
                             on_Changed={(event)=>{
                                 this.setState({name: event})
                             }}
                             validations={[validateExistence, validateName]}/>
+                        {/* <Button 
+                            identifier="signUp" 
+                            onclick={this.signUp.bind(this)}
+                        /> */}
                         <button type='button' onClick={this.signUp.bind(this)}>Signup</button>
                     </div>
                 </div>

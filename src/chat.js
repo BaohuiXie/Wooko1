@@ -15,7 +15,6 @@ export default class Chat extends React.Component {
             url: '',
         };
         this.listeningMessage()
-        // this.listenToImage();
     }
 
     onChangeText(event) {
@@ -28,7 +27,7 @@ export default class Chat extends React.Component {
 
 
     sendText = () => {
-        firebase.database().ref('message').push({
+        firebase.database().ref('messages').push({
             content: this.state.text,
             type: 'text'
         })
@@ -37,7 +36,6 @@ export default class Chat extends React.Component {
 
 
     listeningMessage() {
-        this.text_array = [];
         var messageLisener = firebase.database().ref('messages');
         messageLisener.on('child_added', snapshot => {
             const val = snapshot.val();
@@ -53,7 +51,7 @@ export default class Chat extends React.Component {
 
         upload_task.on(firebase.storage.TaskEvent.STATE_CHANGED, null, null, () => {
             img_ref.getDownloadURL().then(url => {
-                firebase.database().ref('message').push({
+                firebase.database().ref('messages').push({
                     content: url,
                     type: 'image'
                 })
@@ -89,7 +87,7 @@ export default class Chat extends React.Component {
                                     case 'image':
                                         return (
                                             <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >,
-                                            <img src={content} width={100} height={100}/>
+                                            <img src={content} height='100px' width='100px'/>
                                         );
                                 }
                             })

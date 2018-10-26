@@ -23,6 +23,7 @@ export default class TextInput extends PureComponent {
         <input
           style={styles.input}
           placeholder={this.props.placeholder}
+          type={this.props.type}
           onChange={(evt) => {
             this.setState({value: evt.target.value});
             this.props.onChangeText && this.props.onChangeText(evt.target.value);
