@@ -75,27 +75,25 @@ export default class Chat extends React.Component {
                 <h1 id='title'>Chat</h1><hr />
                 <div id='Block'>
                     <div id='messageBlock'>
-                        <div ref={message => this.message = message}>
-Zx                            {
-                                message.map((msg, index) => {
-                                    const { type, content } = msg;
-                                    switch (type) {
-                                        case 'text':
-                                            return (
-                                                <div style={{margin:20}}>
-                                                    <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >
-                                                    <p key={index + 'msg'}>{content}</p> 
-                                                </div>
-                                            )
-                                        case 'image':
-                                            return (
-                                                <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >,
-                                                <img src={content} width={100} height={100}/>
-                                            );
-                                    }
-                                })
-                            }
-                        </div>
+                        {
+                            message.map((msg, index) => {
+                                const { type, content } = msg;
+                                switch (type) {
+                                    case 'text':
+                                        return (
+                                            <div style={{margin:20}}>
+                                                <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >
+                                                <p key={index + 'msg'}>{content}</p> 
+                                            </div>
+                                        )
+                                    case 'image':
+                                        return (
+                                            <h4 key={index + 'name'}> {(index % 2 === 0) ? 'Dave' : 'Paula'}</h4 >,
+                                            <img src={content} width={100} height={100}/>
+                                        );
+                                }
+                            })
+                        }
                     </div>
                     <div>
                         <input value={this.state.text} type='text' placeholder='TextLine'
