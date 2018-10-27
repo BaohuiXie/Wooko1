@@ -30,9 +30,6 @@ class SignupPage extends React.Component{
             });
         }
     }
-    handlePassword(event){
-        this.setState({password: event.target.value});
-    }
 
     render(){
         return(
@@ -47,7 +44,7 @@ class SignupPage extends React.Component{
                                 this.emailRef = ref;
                             }}
                             type='email'
-                            on_Changed={(event)=>{
+                            onChangeText={(event)=>{
                                 this.setState({Email: event})
                             }}
                             validations={[validateExistence, validateEmail]}/>
@@ -57,7 +54,9 @@ class SignupPage extends React.Component{
                                 this.passwordRef = ref;
                             }}
                             type='password'
-                            handlePassword={this.handlePassword.bind(this)}
+                            onChangeText={(text) => {
+                                this.setState({password: text});
+                            }}
                             validations={[validateExistence, validatePassword]}/>
                         <TextInpute
                             placeholder="Password Confirmation"
@@ -65,7 +64,7 @@ class SignupPage extends React.Component{
                                 this.passwordCONFIRMERef = ref;
                             }}
                             type='password'
-                            on_Changed={(text)=>{
+                            onChangeText={(text)=>{
                                 this.setState({passwordconfirm: text})
                             }}
                             validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password)]}/>
@@ -75,7 +74,7 @@ class SignupPage extends React.Component{
                                 this.nameRef = ref;
                             }}
                             type='text'
-                            on_Changed={(event)=>{
+                            onChangeText={(event)=>{
                                 this.setState({name: event})
                             }}
                             validations={[validateExistence, validateName]}/>
