@@ -30,7 +30,10 @@ class SignupPage extends React.Component{
             });
         }
     }
-    
+    handlePassword(event){
+        this.setState({password: event.target.value});
+    }
+
     render(){
         return(
             <div id="main">
@@ -54,9 +57,7 @@ class SignupPage extends React.Component{
                                 this.passwordRef = ref;
                             }}
                             type='password'
-                            on_Changed={(event)=>{
-                                this.setState({password: event})
-                            }}
+                            handlePassword={this.handlePassword.bind(this)}
                             validations={[validateExistence, validatePassword]}/>
                         <TextInpute
                             placeholder="Password Confirmation"
@@ -67,7 +68,7 @@ class SignupPage extends React.Component{
                             on_Changed={(text)=>{
                                 this.setState({passwordconfirm: text})
                             }}
-                            validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password, this.state.passwordconfirm)]}/>
+                            validations={[validateExistence, validatePasswordConfirm.bind(null,this.state.password)]}/>
                         <TextInpute
                             placeholder="Name"
                             ref={(ref) => {
@@ -126,10 +127,14 @@ function validatePassword(event){
 }
 
 
-function validatePasswordConfirm(confirmation, text) {
-    if(text===confirmation){
+function validatePasswordConfirm(text, password) {
+    console.log(text)
+    console.log(password)
+    if(text===password){
         return "";
     }
     return "Password and confirmation do not agree";
 }
+
+
 export default SignupPage;

@@ -34,7 +34,7 @@ export default class TextInput extends PureComponent {
     );
   }
 
-  validate = () => {
+  validate(){
     if (!this.props.validations) return true;
     for (let i = 0; i < this.props.validations.length; i++) {
       let validate_func = this.props.validations[i];

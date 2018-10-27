@@ -19,9 +19,6 @@ class Post extends React.Component {
         this.props.fetchPosts();
         this.props.fetchComment();
     }
-    componentDidMount() {
-        alert(this.props.location.query.hhh);
-    }
 
     render() {
         const {
