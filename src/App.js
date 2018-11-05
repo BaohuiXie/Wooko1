@@ -5,6 +5,7 @@ import Post from './post';
 import store from './components/store'
 import Chat from './chat.js'
 import Components from './components'
+import SelectionBar from './selectionBar';
 import {Router,Route,browserHistory} from 'react-router';
 import { Provider} from 'react-redux';  //redux
 
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path='post' component={Post}/>
           <Route path='chat' component={Chat}/>
           <Route path='components' component={Components}/>
+          <Route path='selectionBar' component={SelectionBar}/>
         </Router>
       </Provider>     //redux
     );
